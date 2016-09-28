@@ -12,3 +12,16 @@
 .appear-leave {
   opacity: 0;
 }
+
+.stylish {
+  font-family: 'Qwigley', cursive;
+  font-size: 25px;
+}
+
+#footer {
+  margin-top: 5px
+}
+
+i {
+  color: blue;
+}
