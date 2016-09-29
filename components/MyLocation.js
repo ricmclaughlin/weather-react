@@ -25,10 +25,12 @@ var MyLocation = React.createClass({
   render: function() {
     return (
       <div className="jumbotron col-sm-12 text-center" style={transparentBg}>
-        <h1>Hello fair citizen of {this.state.myLocation.city}, {this.state.myLocation.region}</h1>
-        <p>Your current temperature is {this.state.myLocation.tempF}</p>
-        <p>and it is <img src={this.state.myLocation.weatherIcon} alt="" /> ({this.state.myLocation.weather}) outside!</p>
-
+        <form action=""></form>
+        <input type="text"/>
+        <row id="weather-data">
+          <p>Your current temperature is {this.state.myLocation.tempF}</p>
+          <p>and it is <img src={this.state.myLocation.weatherIcon} alt="" /> ({this.state.myLocation.weather}) outside!</p>
+        </row>
       </div>
     )
   }
@@ -39,7 +41,7 @@ module.exports = MyLocation;
 // <div class="jumbotron text-center">
     
 //   </div>
-
+//{this.state.myLocation.city}
 
 // //   <h1>Weather Based on Your Location</h1>
 // // <p className="lead">Some Fancy Motto</p>

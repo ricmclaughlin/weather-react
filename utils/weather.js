@@ -1,6 +1,8 @@
 var Weather = {
+  apiKey: 'ced22edda5ab59a89469af8a36ce60af',
   getWeather: function(location) {
-    
+    location.currentForecast = `http://api.openweathermap.org/data/2.5/weather?type=accurate&APPID=${this.apiKey}&q=${location.city}`,
+    location.fiveDayForecast = `http://api.openweathermap.org/data/2.5/forecast/daily?type=accurate&cnt=5&APPID=${this.apiKey}&q=${location.city}`,
     location.weatherIcon = 'http://openweathermap.org/img/w/10n.png';
     location.weather = 'rain';
     location.tempC = 20;

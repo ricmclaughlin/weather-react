@@ -25,3 +25,7 @@
 i {
   color: blue;
 }
+
+#weather-data {
+  min-height: 100px;
+}
