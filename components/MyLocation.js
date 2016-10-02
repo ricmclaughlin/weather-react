@@ -5,80 +5,56 @@ var Link = ReactRouter.Link;
 var Location = require('../utils/Location');
 var Weather = require('../utils/Weather');
 
+function ForecastDays(props){
+  return (
+     
+      <div id="weather-data" className="row">
+        {props.forecast.map(function (forecastDay, index) {
+          return (
+            <div key={index} className="col-md-2">
+              <div className="panel panel-default">
+                <div className="panel-heading"><img src={forecastDay.forecastIcon} alt={forecastDay.forecastText}/></div>
+                <div className="panel-body">{forecastDay.dayOfWeek}</div>
+                <div className="panel-body">Forecast: {forecastDay.forecastText}</div>
+                <div className="panel-body">High: {forecastDay.high}</div>
+                <div className="panel-body">Low: {forecastDay.low}</div>
+              </div>
+            </div>
+            )
+          })
+        }
+      </div>
+  );
+}
+
 var MyLocation = React.createClass({
+
   getInitialState: function () {
     return {
       isLoading: true,
-      celsius: false,
-      myLocation: {}
+      myLocation: {},
+      myForecast: []
     }
   },
   componentDidMount: function () {
     var location = Location.getLocation();
-    location = Weather.getWeather(location);
-    console.log(location);
+    var forecasts = Weather.getWeather(location);
+    console.log(forecasts);
     this.setState({
       isLoading: false,
-      myLocation: location
-    })
+      myLocation: location,
+      myForecast: forecasts
+    });
   },
   render: function() {
     return (
       <div className="container text-center" style={transparentBg}>
         <div id="form-row" className="row">
-          <div className="col-md-4">
-          
-          </div>
-          <div className="col-md-4">
-            <h1>The five day forecast for Seattle:</h1>
-          </div>
-          <div className="col-md-4">
-            <form>
-              <div className="form-group">
-                <label for="email">Email address:</label>
-                <input className="form-control" id="email" />
-              </div>
-            </form>
+          <div className="col-md-12">
+            <h1>The five day forecast for <input className="form-control" id="city" /></h1>
           </div>
         </div>
-        
-        <div id="weather-data" className="row">
-          <div className="col-md-2 col-md-offset-1">
-          
-            <div className="panel panel-default">
-              <div className="panel-heading">Panel Heading</div>
-              <div className="panel-body">Panel Content</div>
-            </div>
-          </div>
-          <div className="col-md-2">
-          
-            <div className="panel panel-default">
-              <div className="panel-heading">Panel Heading</div>
-              <div className="panel-body">Panel Content</div>
-            </div>
-          </div>
-          <div className="col-md-2">
-          
-            <div className="panel panel-default">
-              <div className="panel-heading">Panel Heading</div>
-              <div className="panel-body">Panel Content</div>
-            </div>
-          </div>
-          <div className="col-md-2">
-          
-            <div className="panel panel-default">
-              <div className="panel-heading">Panel Heading</div>
-              <div className="panel-body">Panel Content</div>
-            </div>
-          </div>
-          <div className="col-md-2">
-          
-            <div className="panel panel-default">
-              <div className="panel-heading">Panel Heading</div>
-              <div className="panel-body">Panel Content</div>
-            </div>
-          </div>
-        </div>
+      <ForecastDays forecast={this.state.myForecast}/>
 
       </div>
     )
