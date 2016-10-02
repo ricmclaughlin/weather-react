@@ -26,6 +26,10 @@ i {
   color: blue;
 }
 
-#weather-data {
+#weather-data, #form-row {
+  min-height: 100px;
+}
+
+.col-md-2 {
   min-height: 100px;
 }

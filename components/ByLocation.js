@@ -12,6 +12,7 @@ var ByLocation = React.createClass({
         <Link to="/">
           <button className="btn btn-lg btn-success" type="button">Pick Location</button>
         </Link>
+       
       </div>
     )
   }

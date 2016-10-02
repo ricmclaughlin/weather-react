@@ -24,13 +24,62 @@ var MyLocation = React.createClass({
   },
   render: function() {
     return (
-      <div className="jumbotron col-sm-12 text-center" style={transparentBg}>
-        <form action=""></form>
-        <input type="text"/>
-        <row id="weather-data">
-          <p>Your current temperature is {this.state.myLocation.tempF}</p>
-          <p>and it is <img src={this.state.myLocation.weatherIcon} alt="" /> ({this.state.myLocation.weather}) outside!</p>
-        </row>
+      <div className="container text-center" style={transparentBg}>
+        <div id="form-row" className="row">
+          <div className="col-md-4">
+          
+          </div>
+          <div className="col-md-4">
+            <h1>The five day forecast for Seattle:</h1>
+          </div>
+          <div className="col-md-4">
+            <form>
+              <div className="form-group">
+                <label for="email">Email address:</label>
+                <input className="form-control" id="email" />
+              </div>
+            </form>
+          </div>
+        </div>
+        
+        <div id="weather-data" className="row">
+          <div className="col-md-2 col-md-offset-1">
+          
+            <div className="panel panel-default">
+              <div className="panel-heading">Panel Heading</div>
+              <div className="panel-body">Panel Content</div>
+            </div>
+          </div>
+          <div className="col-md-2">
+          
+            <div className="panel panel-default">
+              <div className="panel-heading">Panel Heading</div>
+              <div className="panel-body">Panel Content</div>
+            </div>
+          </div>
+          <div className="col-md-2">
+          
+            <div className="panel panel-default">
+              <div className="panel-heading">Panel Heading</div>
+              <div className="panel-body">Panel Content</div>
+            </div>
+          </div>
+          <div className="col-md-2">
+          
+            <div className="panel panel-default">
+              <div className="panel-heading">Panel Heading</div>
+              <div className="panel-body">Panel Content</div>
+            </div>
+          </div>
+          <div className="col-md-2">
+          
+            <div className="panel panel-default">
+              <div className="panel-heading">Panel Heading</div>
+              <div className="panel-body">Panel Content</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     )
   }
@@ -38,13 +87,3 @@ var MyLocation = React.createClass({
 
 module.exports = MyLocation;
 
-// <div class="jumbotron text-center">
-    
-//   </div>
-//{this.state.myLocation.city}
-
-// //   <h1>Weather Based on Your Location</h1>
-// // <p className="lead">Some Fancy Motto</p>
-// // <Link to="/bylocation">
-// //   <button className="btn btn-lg btn-success" type="button">Pick Location</button>
-// // </Link>
