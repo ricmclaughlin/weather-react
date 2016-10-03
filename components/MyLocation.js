@@ -21,18 +21,19 @@ var MyLocation = React.createClass({
 
   handleUpdateLocation: function(e) {
     this.setState({
-      myLocation: e.target.value
+      newLocation: e.target.value
     })
   },
 
   handleSubmitLocation: function(e) {
     e.preventDefault();
-    this.getWeather(this.state.myLocation);
+    this.getWeather(this.state.newLocation);
   },
 
   getInitialState: function () {
     return {
       isLoading: true,
+      newLocation: '',
       myLocation: '',
       myForecast: []
     }

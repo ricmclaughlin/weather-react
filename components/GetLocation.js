@@ -13,7 +13,7 @@ function GetLocation(props) {
             <input 
               type="text"
               className="form-control"
-              value={props.Location}
+              value={props.newLocation}
               onChange={props.onUpdateLocation}
             />
             <button 
