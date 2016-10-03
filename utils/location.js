@@ -5,7 +5,7 @@ var Location = {
     return fetch(locationApiUrl)
       .then(data => data.json())
       .then(json => {
-        return location = json.city;
+        return location = json.city.replace(/\b\w/g, function(l){ return l.toUpperCase() })
       });
   }
 };   

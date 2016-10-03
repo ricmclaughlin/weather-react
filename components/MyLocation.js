@@ -13,15 +13,16 @@ var MyLocation = React.createClass({
       .then(data => {
         this.setState({
           isLoading: false,
+          myForecast: data,
           myLocation: location,
-          myForecast: data
+          newLocation: ''
         });  
       });
   },
 
   handleUpdateLocation: function(e) {
     this.setState({
-      newLocation: e.target.value
+      newLocation: e.target.value.replace(/\b\w/g, function(l){ return l.toUpperCase() })
     })
   },
 

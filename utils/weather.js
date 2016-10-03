@@ -17,7 +17,6 @@ var Weather = {
   
   getWeather: function(location) {
     var fiveDayForecastURL = `http://api.openweathermap.org/data/2.5/forecast/daily?type=accurate&cnt=5&APPID=${this.apiKey}&q=${location}&units=imperial`;
-    console.log(location);
     return fetch(fiveDayForecastURL)
       .then(data => data.json())
       .then(json => this.createForecasts(json.list));
