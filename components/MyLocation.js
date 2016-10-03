@@ -7,55 +7,100 @@ var Weather = require('../utils/Weather');
 
 function ForecastDays(props){
   return (
-     
-      <div id="weather-data" className="row">
-        {props.forecast.map(function (forecastDay, index) {
+    <div id="weather-data" className="row">
+      {
+        props.forecast.map(function (forecastDay, index) {
           return (
-            <div key={index} className="col-md-2">
-              <div className="panel panel-default">
-                <div className="panel-heading"><img src={forecastDay.forecastIcon} alt={forecastDay.forecastText}/></div>
-                <div className="panel-body">{forecastDay.dayOfWeek}</div>
-                <div className="panel-body">Forecast: {forecastDay.forecastText}</div>
-                <div className="panel-body">High: {forecastDay.high}</div>
-                <div className="panel-body">Low: {forecastDay.low}</div>
-              </div>
-            </div>
-            )
-          })
-        }
+            <ForecastPanel key={index} forecastDay={forecastDay} />
+          )
+        })
+      }
+    </div>
+  );
+}
+
+function GetLocation(props) {
+  return (
+    <div id="form-row" className="row">
+      <div className="col-md-12">
+      <form onSubmit={props.onSubmitLocation}>
+        <h1>The five day forecast for {props.header}</h1>
+        <input 
+          type="text"
+          className="form-control"
+          value={props.myLocation}
+          onChange={props.onUpdateLocation}
+        />
+        <button 
+          className="btn btn-block btn-success" 
+          type="submit">
+          Get Forecast
+        </button>
+      </form>
       </div>
+    </div>
+  );
+}
+
+function ForecastPanel (props){
+  return (
+    <div key={props.index} className="col-md-2">
+      <div className="panel panel-default">
+        <div className="panel-heading"><img src={props.forecastDay.forecastIcon} alt={props.forecastDay.forecastText}/></div>
+        <div className="panel-body">{props.forecastDay.dayOfWeek}</div>
+        <div className="panel-body">Forecast: {props.forecastDay.forecastText}</div>
+        <div className="panel-body">High: {props.forecastDay.high}</div>
+        <div className="panel-body">Low: {props.forecastDay.low}</div>
+      </div>
+    </div>
   );
 }
 
 var MyLocation = React.createClass({
+  getWeather: function(location) {
+    Weather.getWeather(location)
+      .then(data => {
+        this.setState({
+          isLoading: false,
+          myLocation: location,
+          myForecast: data
+        });  
+      });
+  },
+
+  handleUpdateLocation: function(e) {
+    this.setState({
+      myLocation: e.target.value
+    })
+  },
+
+  handleSubmitLocation: function(e) {
+    e.preventDefault();
+    this.getWeather(this.state.myLocation);
+  },
 
   getInitialState: function () {
     return {
       isLoading: true,
-      myLocation: {},
+      myLocation: '',
       myForecast: []
     }
   },
+
   componentDidMount: function () {
-    var location = "Seattle";
-    Weather.getWeather(location).then(data => {
-      this.setState({
-        isLoading: false,
-        myLocation: location,
-        myForecast: data
-      });  
-    });
+    Location.getLocation().then(location => this.getWeather(location))
   },
+
   render: function() {
     return (
       <div className="container text-center" style={transparentBg}>
-        <div id="form-row" className="row">
-          <div className="col-md-12">
-            <h1>The five day forecast for <input className="form-control" id="city" /></h1>
-          </div>
-        </div>
-      <ForecastDays forecast={this.state.myForecast}/>
-
+        <GetLocation 
+          myLocation={this.state.myLocation}
+          header={this.state.myLocation} 
+          onSubmitLocation={this.handleSubmitLocation} 
+          onUpdateLocation={this.handleUpdateLocation}
+          />
+        <ForecastDays forecast={this.state.myForecast}/>
       </div>
     )
   }
