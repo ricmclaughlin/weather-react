@@ -4,57 +4,8 @@ var ReactRouter = require('react-router');
 var Link = ReactRouter.Link;
 var Location = require('../utils/Location');
 var Weather = require('../utils/Weather');
-
-function ForecastDays(props){
-  return (
-    <div id="weather-data" className="row">
-      {
-        props.forecast.map(function (forecastDay, index) {
-          return (
-            <ForecastPanel key={index} forecastDay={forecastDay} />
-          )
-        })
-      }
-    </div>
-  );
-}
-
-function GetLocation(props) {
-  return (
-    <div id="form-row" className="row">
-      <div className="col-md-12">
-      <form onSubmit={props.onSubmitLocation}>
-        <h1>The five day forecast for {props.header}</h1>
-        <input 
-          type="text"
-          className="form-control"
-          value={props.myLocation}
-          onChange={props.onUpdateLocation}
-        />
-        <button 
-          className="btn btn-block btn-success" 
-          type="submit">
-          Get Forecast
-        </button>
-      </form>
-      </div>
-    </div>
-  );
-}
-
-function ForecastPanel (props){
-  return (
-    <div key={props.index} className="col-md-2">
-      <div className="panel panel-default">
-        <div className="panel-heading"><img src={props.forecastDay.forecastIcon} alt={props.forecastDay.forecastText}/></div>
-        <div className="panel-body">{props.forecastDay.dayOfWeek}</div>
-        <div className="panel-body">Forecast: {props.forecastDay.forecastText}</div>
-        <div className="panel-body">High: {props.forecastDay.high}</div>
-        <div className="panel-body">Low: {props.forecastDay.low}</div>
-      </div>
-    </div>
-  );
-}
+var ForecastDays = require('../components/ForecastDays');
+var GetLocation = require('../components/GetLocation');
 
 var MyLocation = React.createClass({
   getWeather: function(location) {

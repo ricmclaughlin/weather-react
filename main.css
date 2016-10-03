@@ -33,3 +33,11 @@ i {
 .col-md-2 {
   min-height: 100px;
 }
+
+form {
+  margin: 10px;
+}
+
+.btn-block {
+  margin-top: 10px;
+}
