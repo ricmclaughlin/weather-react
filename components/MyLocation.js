@@ -37,13 +37,13 @@ var MyLocation = React.createClass({
     }
   },
   componentDidMount: function () {
-    var location = Location.getLocation();
-    var forecasts = Weather.getWeather(location);
-    console.log(forecasts);
-    this.setState({
-      isLoading: false,
-      myLocation: location,
-      myForecast: forecasts
+    var location = "Seattle";
+    Weather.getWeather(location).then(data => {
+      this.setState({
+        isLoading: false,
+        myLocation: location,
+        myForecast: data
+      });  
     });
   },
   render: function() {

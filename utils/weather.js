@@ -6,7 +6,7 @@ var Weather = {
     return forecast.map(function(day) {
       var weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
       var theForecast = {};
-      theForecast.dayOfWeek = weekDay[new Date(day.dt).getDay()];
+      theForecast.dayOfWeek = weekDay[new Date(day.dt * 1000).getDay()];
       theForecast.forecastText = day.weather[0].description.replace(/\b\w/g, function(l){ return l.toUpperCase() });
       theForecast.forecastIcon = 'http://openweathermap.org/img/w/' + day.weather[0].icon + '.png';
       theForecast.high = Math.round(day.temp.max);
@@ -16,9 +16,10 @@ var Weather = {
   },
   
   getWeather: function(location) {
-    var fiveDayForecastURL = `http://api.openweathermap.org/data/2.5/forecast/daily?type=accurate&cnt=5&APPID=${this.apiKey}&q=${location.city}&units=imperial`;
-    var forecasts = this.createForecasts(this.forecast.list);
-    return forecasts;
+    var fiveDayForecastURL = `http://api.openweathermap.org/data/2.5/forecast/daily?type=accurate&cnt=5&APPID=${this.apiKey}&q=${location}&units=imperial`;
+    return fetch(fiveDayForecastURL)
+      .then(data => data.json())
+      .then(json => this.createForecasts(json.list));
   }
 };
 
