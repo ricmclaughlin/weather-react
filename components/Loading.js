@@ -17,7 +17,7 @@ const styles = {
   }
 };
 
-var Loading = React.createClass({
+const Loading = React.createClass({
   propTypes: {
     text: PropTypes.string,
     speed: PropTypes.number,

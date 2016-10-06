@@ -5,6 +5,8 @@ import Location from '../utils/Location'
 import Weather from '../utils/Weather'
 import ForecastDays from '../components/ForecastDays'
 import GetLocation from '../components/GetLocation'
+import Loading from '../components/Loading'
+import Footer from '../components/Footer'
 
 class MyLocation extends Component{
   constructor() {
@@ -44,17 +46,20 @@ class MyLocation extends Component{
     Location.getLocation().then(location => this.getWeather(location))
   }
 
-  render() {
+  render() { 
     return (
-      <div className="container text-center" style={transparentBg}>
-        <GetLocation 
-          myLocation={this.state.myLocation}
-          header={this.state.myLocation} 
-          onSubmitLocation={(event) => this.handleSubmitLocation(event)} 
-          onUpdateLocation={(event) => this.handleUpdateLocation(event)}
-          />
-        <ForecastDays forecast={this.state.myForecast}/>
-      </div>
+      (this.state.isLoading === true) ? 
+        <Loading />: 
+        <div className="container text-center" style={transparentBg}>
+          <GetLocation 
+            myLocation={this.state.myLocation}
+            header={this.state.myLocation} 
+            onSubmitLocation={(event) => this.handleSubmitLocation(event)} 
+            onUpdateLocation={(event) => this.handleUpdateLocation(event)}
+            />
+          <ForecastDays forecast={this.state.myForecast}/>
+          <Footer />
+        </div>
     )
   }
 }
