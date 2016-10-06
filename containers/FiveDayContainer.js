@@ -8,7 +8,7 @@ import GetLocation from '../components/GetLocation'
 import Loading from '../components/Loading'
 import Footer from '../components/Footer'
 
-class MyLocation extends Component{
+class FiveDayContainer extends Component{
   constructor() {
     super()
     this.state = {
@@ -64,4 +64,4 @@ class MyLocation extends Component{
   }
 }
 
-export default MyLocation
+export default FiveDayContainer
