@@ -8,7 +8,7 @@ export default function ForecastDays({forecast}){
       {
         forecast.map(function (forecastDay, index) {
           return (
-            <ForecastPanel key={index} forecastDay={forecastDay} list={listMode}/>
+            <ForecastPanel key={index} forecastDay={forecastDay} listMode={listMode}/>
           )
         })
       }

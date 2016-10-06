@@ -34,10 +34,14 @@ i {
   min-height: 100px;
 }
 
-form {
-  margin: 10px;
-}
-
 .btn-block {
   margin-top: 10px;
+}
+
+.navbar-default {
+  padding-top: 7px;
+}
+
+.btn-default {
+  margin-left: 7px;
 }

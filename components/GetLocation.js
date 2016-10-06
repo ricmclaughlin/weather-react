@@ -2,28 +2,26 @@ import React, { PropTypes } from 'react';
 
 export default function GetLocation(props) {
   return (
-    <div id="form-row" className="row">
-      <div className="col-md-9">
-        <h1>The five day forecast for {props.header}</h1>
-      </div>
-      <div className="col-md-3">      
-        <form onSubmit={props.onSubmitLocation}>
+    <nav className="navbar navbar-default">
+      <div className="container-fluid">
+        <div className="navbar-header">
+          <p className="navbar-brand">The five day forecast for {props.header}</p>
+        </div>
+        <form className="navbar-form navbar-right" role="search" onSubmit={props.onSubmitLocation}>
           <div className="form-group">
             <input 
-              type="text"
-              className="form-control"
-              value={props.newLocation}
-              onChange={props.onUpdateLocation}
-            />
-            <button 
-              className="btn btn-block btn-success" 
-              type="submit">
-              Get Forecast
-            </button>
-          </div>
+                type="text"
+                className="form-control"
+                placeholder="Different Location?"
+                value={props.newLocation}
+                onChange={props.onUpdateLocation}
+              />
+          </div> 
+          <button type="submit" className="btn btn-default">Get Forecast</button>
+          
         </form>
-      </div>      
-    </div>
+      </div>
+    </nav>
   );
 }
 
