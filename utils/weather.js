@@ -3,14 +3,15 @@ const Weather = {
   apiKey: 'ced22edda5ab59a89469af8a36ce60af',
 
   createForecasts: function(forecast) {
-    return forecast.map(function(day) {
-      const weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-      var theForecast = {};
-      theForecast.dayOfWeek = weekDay[new Date(day.dt * 1000).getDay()];
-      theForecast.forecastText = day.weather[0].description.replace(/\b\w/g, function(l){ return l.toUpperCase() });
-      theForecast.forecastIcon = 'http://openweathermap.org/img/w/' + day.weather[0].icon + '.png';
-      theForecast.high = Math.round(day.temp.max);
-      theForecast.low = Math.round(day.temp.min);
+    return forecast.map(function(day, index) {
+      const weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+      var theForecast = {}
+      theForecast.dayOfWeek = weekDay[new Date(day.dt * 1000).getDay()]
+      theForecast.forecastText = day.weather[0].description.replace(/\b\w/g, function(l){ return l.toUpperCase() })
+      theForecast.forecastIcon = 'http://openweathermap.org/img/w/' + day.weather[0].icon + '.png'
+      theForecast.high = Math.round(day.temp.max)
+      theForecast.low = Math.round(day.temp.min)
+      theForecast.position = index
       return theForecast;
     });   
   },

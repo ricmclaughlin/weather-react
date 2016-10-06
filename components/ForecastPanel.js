@@ -1,14 +1,15 @@
 import React, { PropTypes } from 'react'
 
-export default function ForecastPanel ({index, forecastDay}) {
+export default function ForecastPanel (props) {
+  let positionClass = ( props.listMode && props.forecastDay.position === 0) ? 'col-md-offset-1 col-md-2' : 'col-md-2'
   return (
-    <div key={index} className="col-md-2">
+    <div key={props.index} className={positionClass}>
       <div className="panel panel-default">
-        <div className="panel-heading"><img src={forecastDay.forecastIcon} alt={forecastDay.forecastText}/></div>
-        <div className="panel-body">{forecastDay.dayOfWeek}</div>
-        <div className="panel-body">Forecast: {forecastDay.forecastText}</div>
-        <div className="panel-body">High: {forecastDay.high}</div>
-        <div className="panel-body">Low: {forecastDay.low}</div>
+        <div className="panel-heading"><img src={props.forecastDay.forecastIcon} alt={props.forecastDay.forecastText}/></div>
+        <div className="panel-body">{props.forecastDay.dayOfWeek}</div>
+        <div className="panel-body">Forecast: {props.forecastDay.forecastText}</div>
+        <div className="panel-body">High: {props.forecastDay.high}</div>
+        <div className="panel-body">Low: {props.forecastDay.low}</div>
       </div>
     </div>
   );
