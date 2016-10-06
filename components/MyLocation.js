@@ -1,13 +1,23 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes, Component } from 'react'
 import transparentBg from '../styles'
 import { Link } from 'react-router'
-import { Location } from '../utils/Location'
-import { Weather } from '../utils/Weather'
+import Location from '../utils/Location'
+import Weather from '../utils/Weather'
 import ForecastDays from '../components/ForecastDays'
 import GetLocation from '../components/GetLocation'
 
-var MyLocation = React.createClass({
-  getWeather: function(location) {
+class MyLocation extends Component{
+  constructor() {
+    super()
+    this.state = {
+      isLoading: true,
+      newLocation: '',
+      myLocation: '',
+      myForecast: []
+    }
+  }
+
+  getWeather(location) {
     Weather.getWeather(location)
       .then(data => {
         this.setState({
@@ -17,46 +27,36 @@ var MyLocation = React.createClass({
           newLocation: ''
         });  
       });
-  },
+  }
 
-  handleUpdateLocation: function(e) {
+  handleUpdateLocation(e) {
     this.setState({
       newLocation: e.target.value.replace(/\b\w/g, function(l){ return l.toUpperCase() })
     })
-  },
+  }
 
-  handleSubmitLocation: function(e) {
+  handleSubmitLocation(e) {
     e.preventDefault();
     this.getWeather(this.state.newLocation);
-  },
+  }
 
-  getInitialState: function () {
-    return {
-      isLoading: true,
-      newLocation: '',
-      myLocation: '',
-      myForecast: []
-    }
-  },
-
-  componentDidMount: function () {
+  componentDidMount() {
     Location.getLocation().then(location => this.getWeather(location))
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <div className="container text-center" style={transparentBg}>
         <GetLocation 
           myLocation={this.state.myLocation}
           header={this.state.myLocation} 
-          onSubmitLocation={this.handleSubmitLocation} 
-          onUpdateLocation={this.handleUpdateLocation}
+          onSubmitLocation={(event) => this.handleSubmitLocation(event)} 
+          onUpdateLocation={(event) => this.handleUpdateLocation(event)}
           />
         <ForecastDays forecast={this.state.myForecast}/>
       </div>
     )
   }
-});
+}
 
-module.exports = MyLocation;
-
+export default MyLocation

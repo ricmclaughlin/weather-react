@@ -1,4 +1,4 @@
-export const Location = {
+const Location = {
   getLocation: function () {
     var locationApiUrl = 'http://ip-api.com/json';
     var location = '';
@@ -10,3 +10,4 @@ export const Location = {
   }
 };   
 
+export default Location

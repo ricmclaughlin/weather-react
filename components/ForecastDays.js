@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react'
 import ForecastPanel from './ForecastPanel'
 
-function ForecastDays(props){
+export default function ForecastDays({forecast}){
   return (
     <div id="weather-data" className="row">
       {
-        props.forecast.map(function (forecastDay, index) {
+        forecast.map(function (forecastDay, index) {
           return (
             <ForecastPanel key={index} forecastDay={forecastDay} />
           )
@@ -18,5 +18,3 @@ function ForecastDays(props){
 ForecastDays.propTypes = {
   forecast: PropTypes.array.isRequired
 };
-
-export default ForecastDays

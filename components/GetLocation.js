@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-function GetLocation(props) {
+export default function GetLocation(props) {
   return (
     <div id="form-row" className="row">
       <div className="col-md-9">
@@ -33,4 +33,3 @@ GetLocation.propTypes = {
   onSubmitLocation: PropTypes.func.isRequired,
   onUpdateLocation: PropTypes.func.isRequired
 };
-export default GetLocation
