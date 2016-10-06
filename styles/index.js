@@ -1,7 +1,1 @@
-var styles = {
-  transparentBg: {
-    background: 'transparent'
-  }
-};
-
-module.exports = styles;
+export const transparentBg = { background: 'transparent' }

@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
-require('../main.css');
+import '../main.css';
 
 var Main = React.createClass({
   render: function() {
@@ -18,4 +18,4 @@ var Main = React.createClass({
   }
 });
 
-module.exports = Main;
+export default Main

@@ -1,4 +1,4 @@
-var Location = {
+export const Location = {
   getLocation: function () {
     var locationApiUrl = 'http://ip-api.com/json';
     var location = '';
@@ -9,4 +9,4 @@ var Location = {
       });
   }
 };   
-module.exports = Location;
+

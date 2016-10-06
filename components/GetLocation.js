@@ -1,5 +1,4 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
+import React, { PropTypes } from 'react';
 
 function GetLocation(props) {
   return (
@@ -34,5 +33,4 @@ GetLocation.propTypes = {
   onSubmitLocation: PropTypes.func.isRequired,
   onUpdateLocation: PropTypes.func.isRequired
 };
-
-module.exports = GetLocation;
+export default GetLocation

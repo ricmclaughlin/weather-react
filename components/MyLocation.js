@@ -1,11 +1,10 @@
-var React = require('react');
-var transparentBg = require('../styles').transparentBg;
-var ReactRouter = require('react-router');
-var Link = ReactRouter.Link;
-var Location = require('../utils/Location');
-var Weather = require('../utils/Weather');
-var ForecastDays = require('../components/ForecastDays');
-var GetLocation = require('../components/GetLocation');
+import React, { PropTypes } from 'react'
+import transparentBg from '../styles'
+import { Link } from 'react-router'
+import { Location } from '../utils/Location'
+import { Weather } from '../utils/Weather'
+import ForecastDays from '../components/ForecastDays'
+import GetLocation from '../components/GetLocation'
 
 var MyLocation = React.createClass({
   getWeather: function(location) {

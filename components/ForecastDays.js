@@ -1,6 +1,5 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
-var ForecastPanel = require('./ForecastPanel');
+import React, { PropTypes } from 'react'
+import ForecastPanel from './ForecastPanel'
 
 function ForecastDays(props){
   return (
@@ -20,4 +19,4 @@ ForecastDays.propTypes = {
   forecast: PropTypes.array.isRequired
 };
 
-module.exports = ForecastDays;
+export default ForecastDays

@@ -1,5 +1,5 @@
-var React = require('react');
-var Link = require('react-router').Link;
+import React from 'react'
+import { Link } from 'react-router'
 
 var PickLocationContainer = React.createClass({
   render: function () {
@@ -16,4 +16,4 @@ var PickLocationContainer = React.createClass({
   }
 });
 
-module.exports = PickLocationContainer;
+export default PickLocationContainer

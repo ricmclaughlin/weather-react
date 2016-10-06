@@ -1,11 +1,7 @@
-var React = require('react');
-var ReactRouter = require('react-router');
-var Router = ReactRouter.Router;
-var Route = ReactRouter.Route;
-var hashHistory = ReactRouter.hashHistory;
-var IndexRoute = ReactRouter.IndexRoute;
-var Main = require('../components/Main');
-var MyLocation = require("../components/MyLocation");
+import React from 'react'
+import { Router, hashHistory, IndexRoute, Route } from 'react-router'
+import Main from '../components/Main';
+import MyLocation from "../components/MyLocation"
 
 var routes = (
   <Router history={hashHistory}>

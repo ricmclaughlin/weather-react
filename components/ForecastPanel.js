@@ -1,5 +1,4 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
+import React, { PropTypes } from 'react'
 
 function ForecastPanel (props){
   return (
@@ -25,4 +24,4 @@ ForecastPanel.propTypes = {
   })
 };
 
-module.exports = ForecastPanel;
+export default ForecastPanel
