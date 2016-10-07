@@ -6,11 +6,7 @@ export default function ForecastPanel (props) {
   return (
     <div key={props.index} className={positionClass}>
       <div className="panel panel-default">
-        <div className="panel-heading">
-          <Link to='/singleDay'>
-            <img src={props.forecastDay.forecastIcon} alt={props.forecastDay.forecastText}/>
-          </Link>  
-        </div>
+        <div className="panel-heading"><img src={props.forecastDay.forecastIcon} alt={props.forecastDay.forecastText}/></div>
         <div className="panel-body">{props.forecastDay.dayOfWeek}</div>
         <div className="panel-body">Forecast: {props.forecastDay.forecastText}</div>
         <div className="panel-body">High: {props.forecastDay.high}</div>

@@ -27,7 +27,7 @@ export default function GetLocation(props) {
 
 GetLocation.propTypes = {
   header: PropTypes.string.isRequired,
-  myLocation: PropTypes.string.isRequired,
+  newLocation: PropTypes.string.isRequired,
   onSubmitLocation: PropTypes.func.isRequired,
   onUpdateLocation: PropTypes.func.isRequired
 };

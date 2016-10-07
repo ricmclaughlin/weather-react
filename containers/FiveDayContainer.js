@@ -51,8 +51,8 @@ class FiveDayContainer extends Component{
       (this.state.isLoading === true) ? 
         <Loading />: 
         <div className="container text-center" style={transparentBg}>
-          <GetLocation 
-            myLocation={this.state.myLocation}
+          <GetLocation
+            newLocation={this.state.newLocation} 
             header={this.state.myLocation} 
             onSubmitLocation={(event) => this.handleSubmitLocation(event)} 
             onUpdateLocation={(event) => this.handleUpdateLocation(event)}
